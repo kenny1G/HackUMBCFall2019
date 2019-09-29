@@ -3,11 +3,13 @@ import json
 import requests
 import datetime as dt
 from datetime import datetime
+from app.nasdaq import Nasdaq
 class Scraper:
 
-    def __init__(self,query):
+    def __init__(self,query,stock):
         self.query = query
-        alphaResponse = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&outputsize=full&symbol=MSFT&apikey=WXCVR1HQHSVB9V2N")
+        self.stock = stock
+        alphaResponse = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&outputsize=full&symbol="+self.get_symbol(stock)+"&apikey=WXCVR1HQHSVB9V2N")
         self.stocks = json.loads(alphaResponse.text)
         self.reddit = praw.Reddit(client_id = 'Adp2y8pmTrKfoQ', client_secret = 'nckgI9sZhQzo0UnPBcL5j5NwLnk', user_agent='WallStreetBetsBets')
         self.subreddit = self.reddit.subreddit('wallstreetbets')
@@ -33,6 +35,16 @@ class Scraper:
     def get_reddit_dates(self):
         return self.topics_dict["created"]
 
+    def get_symbol(self,company_name):
+        if company_name.lower() in Nasdaq.companies.keys():
+            return company_name
+        for value in Nasdaq.companies.values():
+            if company_name.lower() in value:
+                for stuff in Nasdaq.companies.keys():
+                    if value == Nasdaq.companies[stuff]:
+                        return stuff
+
     def get_stocks(self,date):
+        # print(self.stocks)
         if date in self.stocks["Time Series (Daily)"]:
             return self.stocks["Time Series (Daily)"][date]

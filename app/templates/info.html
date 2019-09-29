@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{title}}</h1>
+  <h1>Title: {{title}}</h1>
   <hr>
-  <h2>{{date}}</h2>
-  <h3>{{score}}
+  <h2>Date: {{date}}</h2>
+  <h3>Score: {{score}}</h3>
+  {% if stock == None %}
+  <h4> Sorry, No Stock Data For This Date </h4>
+    {% else %}
+  <h4> SYMBOL: {{company_name}}</h4>
+      <ul>
+      {% for key,value in stock.items() %}
+        <li> {{key}} : {{value}} </li>
+      {% endfor %}
+      <ul>
+    {% endif %}
 {% endblock %}

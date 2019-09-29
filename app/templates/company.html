@@ -7,7 +7,7 @@
   {% for reddit_dict in dict %}
     {% for post in reddit_dict %}
       <tr>
-          <td><a href= "/post/{{post}}"> {{post}} </a></td>
+          <td><a href= "/{{company_name}}/{{post}}"> {{post}} </a></td>
       </tr>
       {% endfor %}
   {% endfor %}

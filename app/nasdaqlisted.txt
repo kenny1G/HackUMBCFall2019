@@ -1,4 +1,3 @@
-Symbol|Security Name|Market Category|Test Issue|Financial Status|Round Lot Size|ETF|NextShares
 AABA|Altaba Inc. - Common Stock|Q|N|N|100|N|N
 AAL|American Airlines Group, Inc. - Common Stock|Q|N|N|100|N|N
 AAME|Atlantic American Corporation - Common Stock|G|N|N|100|N|N
@@ -3482,4 +3481,3 @@ ZXYZ.A|Nasdaq Symbology Test Common Stock|Q|Y|N|100||N
 ZXZZT|NASDAQ TEST STOCK|G|Y|N|100||N
 ZYNE|Zynerba Pharmaceuticals, Inc. - Common Stock|G|N|N|100|N|N
 ZYXI|Zynex, Inc. - Common Stock|S|N|N|100|N|N
-File Creation Time: 0927201921:32|||||||
