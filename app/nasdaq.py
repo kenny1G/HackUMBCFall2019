@@ -11,5 +11,3 @@ class Nasdaq():
         symbol = row.findAll('td')[0].text.lower().replace('\n','')
         name = row.findAll('td')[1].text.lower()
         companies.update({symbol : name})
-
-#print(companies)

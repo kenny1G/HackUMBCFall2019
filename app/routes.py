@@ -2,12 +2,28 @@ from app import app
 from flask import render_template,flash,redirect
 from app.forms import CompanyForm
 from app.nasdaq import Nasdaq
+from app.Scraper import Scraper
 
 @app.route('/',methods=['GET','POST'])
 @app.route('/index',methods=['GET','POST'])
 def index():
     form = CompanyForm()
     if form.validate_on_submit():
-        print(form.company_name.data)
-        return redirect('/index')
+        return redirect('/search/'+form.company_name.data)
     return render_template('index.html', title='Home', form = form)
+
+@app.route('/search/<company_name>')
+def company(company_name):
+    scraper = Scraper(company_name)
+    dict = [scraper.get_reddit_titles()]
+    return render_template('company.html', dict=dict)
+
+@app.route('/post/<post_title>')
+def info(post_title):
+    scraper = Scraper(post_title)
+    title = scraper.get_reddit_titles()[0]
+    date = scraper.get_reddit_dates()[0]
+    score = scraper.get_reddit_scores()[0]
+    stock = scraper.get_stocks(date)
+    print(stock)
+    return render_template('info.html', title=title,date=date,score=score,stock=stock)

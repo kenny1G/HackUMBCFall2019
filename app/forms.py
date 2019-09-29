@@ -8,6 +8,6 @@ class CompanyForm(FlaskForm):
     submit = SubmitField('Bet')
 
     def validate_company_name(self, company_name):
-         if not company_name.data in Nasdaq.companies.keys():
-             if not company_name.data in Nasdaq.companies.values():
+         if not company_name.data.lower() in Nasdaq.companies.keys():
+             if not company_name.data.lower() in Nasdaq.companies.values():
                  raise ValidationError('Sorry this company doesn\'t exist or is not in the S&P 500')
