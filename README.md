@@ -13,6 +13,6 @@ Made using:
 This was my first Hackathon, I randomly got the idea while waiting in line for lunch and decided to try and implement it. this was the first time I called an api or scraped a website.
 
 ## What's next
-This is the first thing I plan on working on when the dust has settled and I get some free time off work and school, I plan on running machine learning algorithms on the text of the post to see if the post is negative or positive and how that correlates to the change in the stock price of the company, a better ui, better data visualizaiton and much more.
+Nothing right now
 
 
